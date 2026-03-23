@@ -27,29 +27,6 @@ Starting a new game should generate a secret number using the current difficulty
 Actual:
 Clicking New Game always reset the secret number using a range of 1 to 100, even when a different difficulty was selected.
 
-### Bug 4: Attempt tracking was inconsistent
-Expected:
-The player should start with zero guesses used, and attempts left should decrease consistently.
-
-Actual:
-The app started with attempts already set to 1, but New Game reset attempts to 0. This made the attempts-left display inconsistent.
-
-### Bug 5: The secret number changed type during gameplay
-Expected:
-The secret number should remain the same data type throughout the game.
-
-Actual:
-On even attempts, the secret number was converted to a string before comparison, which could lead to inconsistent or unreliable behavior.
-
-### Bug 6: Decimal input was handled unexpectedly
-Expected:
-The game should reject decimal guesses if only whole numbers are allowed.
-
-Actual:
-A decimal input such as 4.9 was converted to 4 instead of being rejected, which could confuse the player.
-
----
-
 ## 2. How did you use AI as a teammate?
 
 - Which AI tools did you use on this project (for example: ChatGPT, Gemini, Copilot)?
