@@ -4,9 +4,49 @@ Answer each question in 3 to 5 sentences. Be specific and honest about what actu
 
 ## 1. What was broken when you started?
 
-- What did the game look like the first time you ran it?
-- List at least two concrete bugs you noticed at the start  
-  (for example: "the hints were backwards").
+## 1. What was broken when you started?
+
+### Bug 1: The hints were backwards
+Expected:
+If my guess was too high, the game should tell me to go lower. If my guess was too low, it should tell me to go higher.
+
+Actual:
+The game gave the opposite hint. A high guess showed “Go HIGHER!” and a low guess showed “Go LOWER!”, which made the feedback misleading.
+
+### Bug 2: The game instructions did not match the selected difficulty
+Expected:
+The range shown to the player should match the selected difficulty.
+
+Actual:
+The sidebar displayed one range based on difficulty, but the main instruction always said “Guess a number between 1 and 100.” This made the game confusing because the visible instructions were inconsistent.
+
+### Bug 3: New Game ignored the current difficulty
+Expected:
+Starting a new game should generate a secret number using the current difficulty range.
+
+Actual:
+Clicking New Game always reset the secret number using a range of 1 to 100, even when a different difficulty was selected.
+
+### Bug 4: Attempt tracking was inconsistent
+Expected:
+The player should start with zero guesses used, and attempts left should decrease consistently.
+
+Actual:
+The app started with attempts already set to 1, but New Game reset attempts to 0. This made the attempts-left display inconsistent.
+
+### Bug 5: The secret number changed type during gameplay
+Expected:
+The secret number should remain the same data type throughout the game.
+
+Actual:
+On even attempts, the secret number was converted to a string before comparison, which could lead to inconsistent or unreliable behavior.
+
+### Bug 6: Decimal input was handled unexpectedly
+Expected:
+The game should reject decimal guesses if only whole numbers are allowed.
+
+Actual:
+A decimal input such as 4.9 was converted to 4 instead of being rejected, which could confuse the player.
 
 ---
 
