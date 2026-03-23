@@ -1,6 +1,12 @@
 import random
 import streamlit as st
 
+from logic_utils import (
+    get_range_for_difficulty,
+    parse_guess,
+    check_guess,
+    update_score
+)
 def get_range_for_difficulty(difficulty: str):
     if difficulty == "Easy":
         return 1, 20
@@ -160,10 +166,15 @@ if submit:
         else:
             secret = st.session_state.secret
 
-        outcome, message = check_guess(guess_int, secret)
+        outcome = check_guess(guess_int, secret)
 
         if show_hint:
-            st.warning(message)
+            if outcome == "Too High":
+                st.warning("📉 Go LOWER!")
+            elif outcome == "Too Low":
+                st.warning("📈 Go HIGHER!")
+            elif outcome == "Win":
+                st.success("🎉 Correct!")
 
         st.session_state.score = update_score(
             current_score=st.session_state.score,
